@@ -28,7 +28,7 @@ public class WeatherDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=database_name_2;Username=postgres;Password=panzer117");
+        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=proxy_db;Username=postgres;Password=panzer117");
         base.OnConfiguring(optionsBuilder);
     }
 

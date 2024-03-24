@@ -27,7 +27,7 @@ namespace WeatherEntities.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "days",
+                name: "weathers",
                 columns: table => new
                 {
                     id = table.Column<long>(type: "bigint", nullable: false)
@@ -49,9 +49,9 @@ namespace WeatherEntities.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_days", x => x.id);
+                    table.PrimaryKey("PK_weathers", x => x.id);
                     table.ForeignKey(
-                        name: "FK_days_files_file_id",
+                        name: "FK_weathers_files_file_id",
                         column: x => x.fileid,
                         principalTable: "files",
                         principalColumn: "id",
@@ -59,20 +59,20 @@ namespace WeatherEntities.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_days_file_id",
-                table: "days",
+                name: "IX_files_name",
+                table: "files",
+                column: "name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_weathers_file_id",
+                table: "weathers",
                 column: "file_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_WeatherTrackEntity_Field1_Field2",
-                table: "days",
+                table: "weathers",
                 columns: new[] { "date", "time_only" },
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_files_name",
-                table: "files",
-                column: "name",
                 unique: true);
         }
 
@@ -80,7 +80,7 @@ namespace WeatherEntities.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "days");
+                name: "weathers");
 
             migrationBuilder.DropTable(
                 name: "files");

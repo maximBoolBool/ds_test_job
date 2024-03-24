@@ -4,8 +4,4 @@ using WeatherEntities.Entities;
 namespace WeatherEntities.Repositories;
 
 /// <inheritdoc cref="IRepository{TEntity}"/>
-public interface IWeatherRepository : IRepository<WeatherTrackEntity>
-{
-    Task<IEnumerable<WeatherTrackEntity>> GetPerTimeInterval(CancellationToken cancellationToken = default);
-
-}
+public interface IWeatherRepository : IRepository<WeatherTrackEntity> { }

@@ -8,9 +8,4 @@ public class WeatherRepository : BaseRepository<WeatherTrackEntity>, IWeatherRep
 {
     /// <inheritdoc cref="BaseRepository{TEntity}"/>
     public WeatherRepository(WeatherDbContext context) : base(context) { }
-
-    public async Task<IEnumerable<WeatherTrackEntity>> GetPerTimeInterval(CancellationToken cancellationToken = default)
-    {
-        throw new NotImplementedException();
-    }
 }

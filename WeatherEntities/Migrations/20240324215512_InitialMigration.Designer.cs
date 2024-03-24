@@ -12,7 +12,7 @@ using WeatherEntities;
 namespace WeatherEntities.Migrations
 {
     [DbContext(typeof(WeatherDbContext))]
-    [Migration("20240324163310_InitialMigration")]
+    [Migration("20240324215512_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -124,7 +124,7 @@ namespace WeatherEntities.Migrations
                         .IsUnique()
                         .HasDatabaseName("IX_WeatherTrackEntity_Field1_Field2");
 
-                    b.ToTable("days");
+                    b.ToTable("weathers");
                 });
 
             modelBuilder.Entity("WeatherEntities.Entities.WeatherTrackEntity", b =>

@@ -9,7 +9,7 @@ namespace WeatherEntities.Entities;
 /// <summary>
 ///     Погода за один день
 /// </summary>
-[Table("days")]
+[Table("weathers")]
 public class WeatherTrackEntity : BaseIdEntity
 {
     /// <summary>

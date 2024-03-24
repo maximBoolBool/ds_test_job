@@ -121,7 +121,7 @@ namespace WeatherEntities.Migrations
                         .IsUnique()
                         .HasDatabaseName("IX_WeatherTrackEntity_Field1_Field2");
 
-                    b.ToTable("days");
+                    b.ToTable("weathers");
                 });
 
             modelBuilder.Entity("WeatherEntities.Entities.WeatherTrackEntity", b =>
