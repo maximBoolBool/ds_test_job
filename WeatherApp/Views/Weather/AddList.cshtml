@@ -1,0 +1,12 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h1>Add Weather Archives</h1>
+<form action="/weather/add" method="post" enctype="multipart/form-data">
+    <input type="file" name="files" multiple>
+    <button type="submit">Add Archives</button>
+</form>

@@ -1,0 +1,76 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using WeatherServices.Enums
+@model WeatherServices.Models.PagedListWeatherResponse
+
+@{
+    ViewBag.Title = "List";
+    Layout = "_Layout";
+}
+
+<html>
+<head>
+    <title>Weather list</title>
+</head>
+<body>
+
+<a asp-action="List" asp-route-Type="@Model.Type" asp-route-PageNumber="@(Model.CurrentPage - 1)">Previous</a>
+@for (int i = 1; i <= Model.TotalCountPage; i++)
+{
+    <a asp-action="List" asp-route-Type="@Model.Type" asp-route-PageNumber="@i" class="@(i == Model.CurrentPage ? "selected" : "")">@i</a>
+}
+<a asp-action="List" asp-route-Type="@Model.Type" asp-route-PageNumber="@(Model.CurrentPage + 1)">Next</a>
+
+<form id="paginationForm" asp-controller="Weather" asp-action="List" method="get">
+    <select asp-for="@Model.Type" asp-items="@(GetSeletValues())" onchange="submitForm()"></select>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Temperature</th>
+        <th>Relative Humidity</th>
+        <th>Dew Point Temperature</th>
+        <th>Pressure of Mercury Column</th>
+        <th>Wind Direction</th>
+        <th>Wind Speed</th>
+        <th>Wind Assessment</th>
+        <th>Cloud Cover</th>
+        <th>Height</th>
+        <th>Visibility Variable</th>
+        <th>Weather Phenomena</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var weather in Model.Items)
+    {
+        <tr>
+            <td>@weather.Date</td>
+            <td>@weather.Time</td>
+            <td>@weather.Temperature</td>
+            <td>@weather.RelativeHumidity</td>
+            <td>@weather.DewPointTemperature</td>
+            <td>@weather.PressureOfMercuryColumn</td>
+            <td>@weather.WindType</td>
+            <td>@weather.WindSpeed</td>
+            <td>@weather.VVMeasureMeasurement</td>
+            <td>@weather.CloudCover</td>
+            <td>@weather.Height</td>
+            <td>@weather.VisibilityVariable</td>
+            <td>@(weather.WeatherPhenomena ?? "missing")</td>
+        </tr>
+    }
+    </tbody>
+</table>
+</body>
+
+
+@{
+    IEnumerable<SelectListItem> GetSeletValues() =>
+        Enum.GetValues<PaginationType>().Select(p => new SelectListItem
+        {
+            Value = p.ToString(),
+            Text = p.ToString()
+        });
+}
